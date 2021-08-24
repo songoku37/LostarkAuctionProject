@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid p-5">
+        
+        <div class="row justify-content-center">
+            <div class="col-6 mb-5 py-4 border border-dark h5 text-center "><img src="{{ url_for('static', filename='img/mokoko.jpg') }}" width="40px" height="32px" class="mx-2">원하는 각인 조합을 해주세요</div>
+        </div>
+
+        {% if itemAbilitys %}
+            <div>
+                <span class="">
+                {% for itemAbilitysDic in itemAbilitys %}
+                    {% for key, value in itemAbilitysDic.items() %}
+                        {% if key != 'none' %}
+
+                                {{ key }} {{ value }}<br>
+
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                </span>
+            </div>
+        {% else %}
+            <div class="alert alert-danger" role="alert">
+                먼저 현재상태를 입력해주세요
+            </div>
+        {% endif %}
+        <div class="row border border-dark py-5">
+            <form action="{{ url_for('auction.searching') }}" method="get">
+                <div class="row mb-5">
+                    <div class="row mb-3">
+                        <div class="col h5 text-center">각인1</div>
+                        <div class="col h5 text-center">각인2</div>
+                        <div class="col h5 text-center">각인3</div>
+                        <div class="col h5 text-center">각인4</div>
+                        <div class="col h5 text-center">각인5</div>
+                        <div class="col h5 text-center">각인6</div>
+                        <div class="col h5 text-center">전투특성1</div>
+                        <div class="col h5 text-center">전투특성2</div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave1" name="각인1" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave2" name="각인2" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave3" name="각인3" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col ">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave4" name="각인4" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave5" name="각인5" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="engrave6" name="각인6">
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 분노의 망치</a>
+                                    <option><a class="dropdown-item" href="#">디스트로이어 : 중력수련</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 고독한 기사</a>
+                                    <option><a class="dropdown-item" href="#">워로드 : 전투 태세</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광기</a>
+                                    <option><a class="dropdown-item" href="#">버서커 : 광전사의 비기</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 오의 강화</a>
+                                    <option><a class="dropdown-item" href="#">배틀마스터 : 초심</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 극의: 체술</a>
+                                    <option><a class="dropdown-item" href="#">인파이터 : 충격 단련</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 세맥타통</a>
+                                    <option><a class="dropdown-item" href="#">기공사 : 역천지체</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 강화 무기</a>
+                                    <option><a class="dropdown-item" href="#">데빌헌터 : 핸드거너</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 연속 포격</a>
+                                    <option><a class="dropdown-item" href="#">블래스터 : 화력 강화</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 두 번째 동료</a>
+                                    <option><a class="dropdown-item" href="#">호크아이 : 죽음의 습격</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 진실된 용맹</a>
+                                    <option><a class="dropdown-item" href="#">바드 : 절실한 구원</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 넘치는 교감</a>
+                                    <option><a class="dropdown-item" href="#">서머너 : 상급 소환사</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황제의 칙령</a>
+                                    <option><a class="dropdown-item" href="#">아르카나 : 황후의 은총</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절정</a>
+                                    <option><a class="dropdown-item" href="#">창술사 : 절제</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 버스트</a>
+                                    <option><a class="dropdown-item" href="#">블레이드 : 잔재된 기운</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 멈출 수 없는 충동</a>
+                                    <option><a class="dropdown-item" href="#">데모닉 : 완벽한 억제</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 심판자</a>
+                                    <option><a class="dropdown-item" href="#">홀리나이트 : 축복의 오라</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 아르데타인의 기술</a>
+                                    <option><a class="dropdown-item" href="#">스카우터 : 진화의 유산</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 갈증</a>
+                                    <option><a class="dropdown-item" href="#">리퍼 : 달의 소리</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 사냥의 시간</a>
+                                    <option><a class="dropdown-item" href="#">건슬링어 : 피스메이커</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 일격필살</a>
+                                    <option><a class="dropdown-item" href="#">스트라이커 : 오의난무</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="combat1" name="전투특성1" >
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">각성</a>
+                                    <option><a class="dropdown-item" href="#">강령술</a>
+                                    <option><a class="dropdown-item" href="#">강화 방패</a>
+                                    <option><a class="dropdown-item" href="#">결투의 대가</a>
+                                    <option><a class="dropdown-item" href="#">구슬동자</a>
+                                    <option><a class="dropdown-item" href="#">굳은 의지</a>
+                                    <option><a class="dropdown-item" href="#">급소 타격</a>
+                                    <option><a class="dropdown-item" href="#">기습의 대가</a>
+                                    <option><a class="dropdown-item" href="#">달인의 저력</a>
+                                    <option><a class="dropdown-item" href="#">돌격대장</a>
+                                    <option><a class="dropdown-item" href="#">마나 회복 증가</a>
+                                    <option><a class="dropdown-item" href="#">마나의 흐름</a>
+                                    <option><a class="dropdown-item" href="#">바리케이드</a>
+                                    <option><a class="dropdown-item" href="#">번개의 분노</a>
+                                    <option><a class="dropdown-item" href="#">부러진 뼈</a>
+                                    <option><a class="dropdown-item" href="#">분쇄의 주먹</a>
+                                    <option><a class="dropdown-item" href="#">불굴</a>
+                                    <option><a class="dropdown-item" href="#">선수필승</a>
+                                    <option><a class="dropdown-item" href="#">슈퍼 차지</a>
+                                    <option><a class="dropdown-item" href="#">승부사</a>
+                                    <option><a class="dropdown-item" href="#">쉴드 관통</a>
+                                    <option><a class="dropdown-item" href="#">안정된 상태</a>
+                                    <option><a class="dropdown-item" href="#">약자 무시</a>
+                                    <option><a class="dropdown-item" href="#">에테르 강화</a>
+                                    <option><a class="dropdown-item" href="#">여신의 가호</a>
+                                    <option><a class="dropdown-item" href="#">예리한 둔기</a>
+                                    <option><a class="dropdown-item" href="#">원한</a>
+                                    <option><a class="dropdown-item" href="#">위기 모면</a>
+                                    <option><a class="dropdown-item" href="#">저주받은 인형</a>
+                                    <option><a class="dropdown-item" href="#">정기 흡수</a>
+                                    <option><a class="dropdown-item" href="#">중갑 착용</a>
+                                    <option><a class="dropdown-item" href="#">최대 마나 증가</a>
+                                    <option><a class="dropdown-item" href="#">탈출의 명수</a>
+                                    <option><a class="dropdown-item" href="#">폭발물 전문가</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <select class="form-select col-9" id="combat2" name="전투특성2">
+                                    <option selected><a>입력</a>
+                                    <option><a class="dropdown-item" href="#">각성</a>
+                                    <option><a class="dropdown-item" href="#">강령술</a>
+                                    <option><a class="dropdown-item" href="#">강화 방패</a>
+                                    <option><a class="dropdown-item" href="#">결투의 대가</a>
+                                    <option><a class="dropdown-item" href="#">구슬동자</a>
+                                    <option><a class="dropdown-item" href="#">굳은 의지</a>
+                                    <option><a class="dropdown-item" href="#">급소 타격</a>
+                                    <option><a class="dropdown-item" href="#">기습의 대가</a>
+                                    <option><a class="dropdown-item" href="#">달인의 저력</a>
+                                    <option><a class="dropdown-item" href="#">돌격대장</a>
+                                    <option><a class="dropdown-item" href="#">마나 회복 증가</a>
+                                    <option><a class="dropdown-item" href="#">마나의 흐름</a>
+                                    <option><a class="dropdown-item" href="#">바리케이드</a>
+                                    <option><a class="dropdown-item" href="#">번개의 분노</a>
+                                    <option><a class="dropdown-item" href="#">부러진 뼈</a>
+                                    <option><a class="dropdown-item" href="#">분쇄의 주먹</a>
+                                    <option><a class="dropdown-item" href="#">불굴</a>
+                                    <option><a class="dropdown-item" href="#">선수필승</a>
+                                    <option><a class="dropdown-item" href="#">슈퍼 차지</a>
+                                    <option><a class="dropdown-item" href="#">승부사</a>
+                                    <option><a class="dropdown-item" href="#">쉴드 관통</a>
+                                    <option><a class="dropdown-item" href="#">안정된 상태</a>
+                                    <option><a class="dropdown-item" href="#">약자 무시</a>
+                                    <option><a class="dropdown-item" href="#">에테르 강화</a>
+                                    <option><a class="dropdown-item" href="#">여신의 가호</a>
+                                    <option><a class="dropdown-item" href="#">예리한 둔기</a>
+                                    <option><a class="dropdown-item" href="#">원한</a>
+                                    <option><a class="dropdown-item" href="#">위기 모면</a>
+                                    <option><a class="dropdown-item" href="#">저주받은 인형</a>
+                                    <option><a class="dropdown-item" href="#">정기 흡수</a>
+                                    <option><a class="dropdown-item" href="#">중갑 착용</a>
+                                    <option><a class="dropdown-item" href="#">최대 마나 증가</a>
+                                    <option><a class="dropdown-item" href="#">탈출의 명수</a>
+                                    <option><a class="dropdown-item" href="#">폭발물 전문가</a>
+                                </select>
+                                <input type="number" max="20" min ="0" class="form-control text-center" aria-label="Text input with dropdown button">
+                            </div>
+                        </div>
+                        <div class="my-3 text-center">
+                            <button type="submit" class="btn btn-lg btn--submit--bgcolor text-white">찾기</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row p-5 ">
+
+                    <div class="col py-3 border border-dark ">
+                        <div class="mb-4 h4 text-center"> 장신구 </div>
+                        <div class="row gy-3">
+                            <div class="col-5 ms-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 py-2 border border-dark"> 그림 </div>
+                                    <div class="col-8 ">ㅇㅇ 목걸이</div>
+                                </div>
+                            </div>
+                            <div class="col-5 ms-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 py-2 border border-dark"> 그림 </div>
+                                    <div class="col-8 ">ㅇㅇ 귀걸이</div>
+                                </div>
+                            </div>
+                            <div class="col-5 ms-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 py-2 border border-dark"> 그림 </div>
+                                    <div class="col-8 ">ㅇㅇ 반지</div>
+                                </div>
+                            </div>
+                            <div class="col-5 ms-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 py-2 border border-dark"> 그림 </div>
+                                    <div class="col-8 ">ㅇㅇ 귀걸이</div>
+                                </div>
+                            </div>
+                            <div class="col-5 ms-3">
+                                <div class="row align-items-center">
+                                    <div class="col-4 py-2 border border-dark"> 그림 </div>
+                                    <div class="col-8 ">ㅇㅇ 반지</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col py-3 border-top border-bottom border-end border-dark">
+                        <div class="mb-4 h4 text-center"> 각인 </div>
+                        <div class=" "> 각인 내용 </div>
+                    </div>
+
+                    <div class="col py-3 border-top border-bottom border-end border-dark">
+                        <div class="mb-4 h4 text-center"> 전투특성 </div>
+                        <div class=" "> 전투특성 내용 </div>
+                    </div>
+
+                    <div class="col py-3 border-top border-bottom border-end border-dark">
+                        <div class=" mb-4 h4 text-center"> 즉시구매가 </div>
+                        <div class=" "> 즉시구매가 내용 </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+    {% endblock %}
+
+</body>
+</html>

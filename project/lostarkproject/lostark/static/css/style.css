@@ -1,0 +1,16 @@
+*{ font-size: small; }
+
+select{ width:125px !important; text-align-last: center; text-align: center;}
+
+.header--bgcolor{background-color: #67a617;}
+.header--a{color:white !important; text-decoration: none !important;}
+
+.footer--a{color:white !important; text-decoration: none !important;}
+
+.footer--bgcolor{background-color: #67a617;}
+.iframe--header--height{height : 100px}
+
+.dropdown-menu{max-height:280px;  overflow-y:auto ;}
+
+.btn--submit--bgcolor{background-color: #67a617 !important;}
+.btn--reset--bgcolor{}

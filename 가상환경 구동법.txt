@@ -1,0 +1,9 @@
+1. venvs, project는 로컬C에 넣기
+2/ Pycharm 깔기
+3. Python 3.9.6 버전
+4. 환경변수 추가하기
+
+cmd - lostarkproject(가상환경접근) - flask run(서버 실행)
+Ctrl + C : 서버 종료
+
+127.0.0.1:5000으로 페이지 접속가능

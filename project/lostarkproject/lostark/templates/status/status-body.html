@@ -1,0 +1,1457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+</head>
+<body>
+    {% block content %}
+    <div class="container-fluid">
+        <div class="row p-0 m-0 justify-content-evenly">
+
+            <!-- <div class="col-2 mx-2 py-5  ">
+                <div class="row py-4 mb-5 border border-dark text-center">
+                    <div><img src="img/mokoko.jpg" width="40px" height="32px"> 현재 상태 </div>
+                </div>
+                <div class="h-50 row text-center">
+                    <div class="col-6 py-3 border border-dark"> 전투특성 </div>
+                    <div class="col-6 py-3 border-top border-end border-bottom border-dark"> 각인 </div>
+                </div>
+            </div>  킵... -->
+
+
+            <div class="col-12 py-5 ms-3">
+                <div class="row py-4 mb-5 border border-dark text-center"> 
+                    <div class="h5"><img src="{{ url_for('static', filename='img/mokoko.jpg') }}" width="40px" height="32px" class="mx-2"> 보유 장비를 입력해주세요 </div>
+                </div>
+                <form action="{{ url_for('auction.auction') }}" method="post" target="frAttachFiles">
+                    <div class="row border border-dark py-5">
+                        <div class="row ms-1 mb-4">
+                            <div class="col mx-2 py-2 border border-dark text-center"> 장신구 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 목걸이 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 귀걸이1 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 귀걸이2 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 반지1 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 반지2 </div>
+                            <div class="col mx-2 py-2 border border-dark text-center"> 어빌리티스톤 </div>
+                        </div>
+                        <!-- 목걸이 -->
+                        <div class="row ms-1 mb-3 ">
+                            <div class="col text-center py-2"> 장신구이름 </div>
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="necklaceName" name="목걸이">목걸이
+                                            <option value="none" selected >입력
+                                            <option value="타락한 시간의 목걸이">타락한 시간의 목걸이</option>
+                                            <option value="울부짖는 혼돈의 목걸이">울부짖는 혼돈의 목걸이</option>
+                                            <option value="찬란한 구도자의 목걸이">찬란한 구도자의 목걸이</option>
+                                            <option value="찬란한 구도자의 귀걸이">찬란한 구도자의 귀걸이</option>
+                                            <option value="찬란한 파멸자의 귀걸이">찬란한 파멸자의 귀걸이</option>
+                                            <option value="울부짖는 영겁의 귀걸이">울부짖는 영겁의 귀걸이</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="earing1Name" name="귀걸이1">귀걸이1
+                                            <option value="none" selected >입력
+                                            <option value="타락한 공간의 귀걸이">타락한 공간의 귀걸이
+                                            <option value="타락한 시간의 귀걸이">타락한 시간의 귀걸이
+                                            <option value="울부짖는 혼돈의 귀걸이">울부짖는 혼돈의 귀걸이
+                                            <option value="찬란한 구도자의 귀걸이">찬란한 구도자의 귀걸이
+                                            <option value="찬란한 파멸자의 귀걸이">찬란한 파멸자의 귀걸이
+                                            <option value="울부짖는 영겁의 귀걸이">울부짖는 영겁의 귀걸이
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="earing2Name" name="귀걸이2">귀걸이2
+                                            <option value="none" selected >입력
+                                            <option value="타락한 공간의 귀걸이">타락한 공간의 귀걸이
+                                            <option value="타락한 시간의 귀걸이">타락한 시간의 귀걸이
+                                            <option value="울부짖는 혼돈의 귀걸이">울부짖는 혼돈의 귀걸이
+                                            <option value="찬란한 구도자의 귀걸이">찬란한 구도자의 귀걸이
+                                            <option value="찬란한 파멸자의 귀걸이">찬란한 파멸자의 귀걸이
+                                            <option value="울부짖는 영겁의 귀걸이">울부짖는 영겁의 귀걸이
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 반지1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Name" name="반지1">반지1
+                                        <option value="none" selected >입력
+                                        <option value="타락한 공간의 반지">타락한 공간의 반지
+                                        <option value="타락한 시간의 반지"> 타락한 시간의 반지
+                                        <option value="울부짖는 혼돈의 반지">울부짖는 혼돈의 반지
+                                        <option value="울부짖는 영겁의 반지">울부짖는 영겁의 반지
+                                        <option value="찬란한 구도자의 반지">찬란한 구도자의 반지
+                                        <option value="찬란한 파멸자의 반지">찬란한 파멸자의 반지
+                                    </select>
+                                </div>
+                            </div>    
+                            <!-- 반지2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Name" name="반지2">반지2
+                                        <option value="none" selected >입력
+                                        <option value="타락한 공간의 반지">타락한 공간의 반지
+                                        <option value="타락한 시간의 반지"> 타락한 시간의 반지
+                                        <option value="울부짖는 혼돈의 반지">울부짖는 혼돈의 반지
+                                        <option value="울부짖는 영겁의 반지">울부짖는 영겁의 반지
+                                        <option value="찬란한 구도자의 반지">찬란한 구도자의 반지
+                                        <option value="찬란한 파멸자의 반지">찬란한 파멸자의 반지
+                                    </select>
+                                </div>
+                            </div>  
+                            <!-- 어빌리티스톤 -->
+                            <div class="col text-center"> 
+                            
+                            </div>
+                        </div>
+                        <!-- 목걸이 전투특성1 -->
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 전투특성1 </div>
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="neckCombat1" name="목걸이 전투특성1">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="목걸이 전투특성1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 전투특성1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear1Combat1" name="귀걸이1 전투특성1">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이1 전투특성1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 전투특성1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear2Combat1" name="귀걸이2 전투특성1">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이2 전투특성1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지1 전투특성1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Combat1" name="반지1 전투특성1">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 전투특성1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 전투특성1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Combat1" name="반지2 전투특성1">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 전투특성1 값" value="0">
+                                </div>
+                            </div>
+                            <div class="col text-center"> </div>
+                        </div>
+                        <!-- 목걸이 전투특성2 -->
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 전투특성2 </div>
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="neckCombat2" name="목걸이 전투특성2">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="목걸이 전투특성2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 전투특성2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear1Combat2" name="귀걸이1 전투특성2">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이 전투특성2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 전투특성2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear2Combat2" name="귀걸이2 전투특성2">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이2 전투특성2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지1 전투특성2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Combat2" name="반지1 전투특성2">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 전투특성2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 전투특성2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Combat2" name="반지2 전투특성2">
+                                            <option value="none" selected >입력
+                                            <option value="각성">각성
+                                            <option value="강령술">강령술
+                                            <option value="강화 방패">강화 방패
+                                            <option value="결투의 대가">결투의 대가
+                                            <option value="구슬동자">구슬동자
+                                            <option value="굳은 의지">굳은 의지
+                                            <option value="급소 타격">급소 타격
+                                            <option value="기습의 대가">기습의 대가
+                                            <option value="달인의 저력">달인의 저력
+                                            <option value="돌격대장">돌격대장
+                                            <option value="마나 회복 증가">마나 회복 증가
+                                            <option value="마나의 흐름">마나의 흐름
+                                            <option value="바리케이드">바리케이드
+                                            <option value="번개의 분노">번개의 분노
+                                            <option value="부러진 뼈">부러진 뼈
+                                            <option value="분쇄의 주먹">분쇄의 주먹
+                                            <option value="불굴">불굴
+                                            <option value="선수 필승">선수필승
+                                            <option value="슈퍼 차지">슈퍼 차지
+                                            <option value="승부사">승부사
+                                            <option value="쉴드 관통">쉴드 관통
+                                            <option value="안정된 상태">안정된 상태
+                                            <option value="약자 무시">약자 무시
+                                            <option value="에테르 강화">에테르 강화
+                                            <option value="여신의 가호">여신의 가호
+                                            <option value="예리한 둔기">예리한 둔기
+                                            <option value="원한">원한
+                                            <option value="위기 모면">위기 모면
+                                            <option value="저주받은 인형">저주받은 인형
+                                            <option value="정기 흡수">정기 흡수
+                                            <option value="중갑 착용">중갑 착용
+                                            <option value="최대 마나 증가">최대 마나 증가
+                                            <option value="탈출의 명수">탈출의 명수
+                                            <option value="폭발물 전문가">폭발물 전문가
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 전투특성2 값" value="0">
+                                </div>
+                            </div>
+                            <div class="col text-center"> </div>
+                        </div>
+                        <!-- 목걸이 각인1 -->
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 각인1 </div>
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="neckEngrave1" name="목걸이 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="목걸이 각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 각인1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear1Engrave1" name="귀걸이1 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이1 각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 각인1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear2Engrave1" name="귀걸이2 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이2 각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지1 각인1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Engrave1" name="반지1 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 각인1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Engrave1" name="반지2 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 어빌리티스톤 각인1 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="stoneEngrave1" name="어빌리티스톤 각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="어빌리티스톤 각인1 값" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 각인2 </div>
+                            <div class="col text-center"> 
+                                <!-- 목걸이 각인2 -->
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="neckEngrave2" name="목걸이 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="목걸이 각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="earEngrave2" name="반지 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이1 각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear2Engrave2" name="귀걸이2 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이2 각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지1 각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Engrave2" name="반지1 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Engrave2" name="반지2 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 어빌리티스톤 각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="stoneEngrave2" name="어빌리티스톤 각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="어빌리티스톤 각인2 값" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 각인3 </div>
+                            <div class="col text-center"> 
+                                <!-- 목걸이 각인3 -->
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="neckEngrave3" name="목걸이 각인3">
+                                            <option value="none" selected >입력
+                                            <option value="공격력 감소">공격력 감소
+                                            <option value="공격속도 감소">공격속도 감소
+                                            <option value="방어력 감소">방어력 감소
+                                            <option value="이동속도 감소">이동속도 감소
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="목걸이 각인3 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이1 각인3 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear1Engrave3" name="귀걸이1 각인3">
+                                            <option value="none" selected >입력
+                                            <option value="공격력 감소">공격력 감소
+                                            <option value="공격속도 감소">공격속도 감소
+                                            <option value="방어력 감소">방어력 감소
+                                            <option value="이동속도 감소">이동속도 감소
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이1 각인3 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 귀걸이2 각인3 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ear2Engrave3" name="귀걸이2 각인3">
+                                            <option value="none" selected >입력
+                                            <option value="공격력 감소">공격력 감소
+                                            <option value="공격속도 감소">공격속도 감소
+                                            <option value="방어력 감소">방어력 감소
+                                            <option value="이동속도 감소">이동속도 감소
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="귀걸이2 각인3 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지1 각인3 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1Engrave3" name="반지1 각인3">
+                                            <option value="none" selected >입력
+                                            <option value="공격력 감소">공격력 감소
+                                            <option value="공격속도 감소">공격속도 감소
+                                            <option value="방어력 감소">방어력 감소
+                                            <option value="이동속도 감소">이동속도 감소
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 각인3 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 각인3 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2Engrave3" name="반지2 각인3">
+                                            <option value="none" selected >입력
+                                            <option value="공격력 감소">공격력 감소
+                                            <option value="공격속도 감소">공격속도 감소
+                                            <option value="방어력 감소">방어력 감소
+                                            <option value="이동속도 감소">이동속도 감소
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 각인3 값" value="0">
+                                </div>
+                            </div>
+                            <div class="col text-center"> </div>
+                        </div>
+
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 보조각인 </div>
+                            <div class="col text-center"> 
+                                
+                            </div>
+                            <div class="col text-center"> 
+        
+                            </div>
+                            <div class="col text-center"> 
+
+                            </div>
+                            <div class="col text-center"> 
+                                <!-- 반지1 보조각인 -->
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1SubEngrave1" name="반지1 보조각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 보조각인1 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 보조각인 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2SubEngrave1" name="반지2 보조각인1">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 보조각인1 값" value="0">
+                                </div>
+                            </div>
+                            <div class="col text-center"> </div>
+                        </div>
+
+                        <div class="row ms-1 mb-3">
+                            <div class="col text-center py-2"> 보조각인2 </div>
+                            <div class="col text-center"> 
+
+                            </div>
+                            <div class="col text-center"> 
+                                
+                            </div>
+                            <div class="col text-center"> 
+                                
+                            </div>
+                            <div class="col text-center"> 
+                                <!-- 반지1 보조각인2 -->
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring1SubEngrave2" name="반지1 보조각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지1 보조각인2 값" value="0">
+                                </div>
+                            </div>
+                            <!-- 반지2 보조각인2 -->
+                            <div class="col text-center"> 
+                                <div class="input-group mb-3">
+                                    <select class="form-select col-9" id="ring2SubEngrave2" name="반지2 보조각인2">
+                                            <option value="none" selected >입력
+                                            <option value="디스트로이어 : 분노의망치">디스트로이어 : 분노의 망치
+                                            <option value="디스트로이어 : 중력수련">디스트로이어 : 중력수련
+                                            <option value="워로드 : 고독한 기사">워로드 : 고독한 기사
+                                            <option value="워로드 : 전투 태세">워로드 : 전투 태세
+                                            <option value="버서커 : 광기">버서커 : 광기
+                                            <option value="버서커 : 광전사의 비기">버서커 : 광전사의 비기
+                                            <option value="배틀마스터 : 오의 강화">배틀마스터 : 오의 강화
+                                            <option value="배틀마스터 : 초심">배틀마스터 : 초심
+                                            <option value="인파이터 : 극의: 체술">인파이터 : 극의: 체술
+                                            <option value="인파이터 : 충격 단련">인파이터 : 충격 단련
+                                            <option value="기공사 : 세맥타통">기공사 : 세맥타통
+                                            <option value="기공사 : 역천지체">기공사 : 역천지체
+                                            <option value="데빌헌터 : 강화 무기">데빌헌터 : 강화 무기
+                                            <option value="데빌헌터 : 핸드거너">데빌헌터 : 핸드거너
+                                            <option value="블래스터 : 연속 포격">블래스터 : 연속 포격
+                                            <option value="블래스터 : 화력 강화">블래스터 : 화력 강화
+                                            <option value="호크아이 : 두 번째 동료">호크아이 : 두 번째 동료
+                                            <option value="호크아이 : 죽음의 습격">호크아이 : 죽음의 습격
+                                            <option value="바드 : 진실된 용맹">바드 : 진실된 용맹
+                                            <option value="바드 : 절실한 구원">바드 : 절실한 구원
+                                            <option value="서머너 : 넘치는 교감">서머너 : 넘치는 교감
+                                            <option value="서머너 : 상급 소환사">서머너 : 상급 소환사
+                                            <option value="아르카나 : 황제의 칙령">아르카나 : 황제의 칙령
+                                            <option value="아르카나 : 황후의 은총">아르카나 : 황후의 은총
+                                            <option value="창술사 : 절정">창술사 : 절정
+                                            <option value="창술사 : 절제">창술사 : 절제
+                                            <option value="블레이드 : 버스트">블레이드 : 버스트
+                                            <option value="블레이드 : 잔재된 기운">블레이드 : 잔재된 기운
+                                            <option value="데모닉 : 멈출 수 없는 충동">데모닉 : 멈출 수 없는 충동
+                                            <option value="데모닉 : 완벽한 억제">데모닉 : 완벽한 억제
+                                            <option value="홀리나이트 : 심판자">홀리나이트 : 심판자
+                                            <option value="홀리나이트 : 축복의 오라">홀리나이트 : 축복의 오라
+                                            <option value="스카우터 : 아르데타인의 기술">스카우터 : 아르데타인의 기술
+                                            <option value="스카우터 : 진화의 유산">스카우터 : 진화의 유산
+                                            <option value="리퍼 : 갈증">리퍼 : 갈증
+                                            <option value="리퍼 : 달의 소리">리퍼 : 달의 소리
+                                            <option value="건슬링어 : 사냥의 시간">건슬링어 : 사냥의 시간
+                                            <option value="건슬링어 : 피스메이커">건슬링어 : 피스메이커
+                                            <option value="스트라이커 : 일격필살">스트라이커 : 일격필살
+                                            <option value="스트라이커 : 오의난무">스트라이커 : 오의난무
+                                    </select>
+                                    <input type="number" max="20" min ="0" class="form-control text-center" name="반지2 보조각인2 값" value="0">
+                                </div>
+                            </div>
+                            <div class="col text-center"> </div>
+                        </div>
+
+                    </div>
+                    <div class ="col my-5 text-center"  >
+                        <button type="submit" class="btn btn--submit--bgcolor text-white">적용</button> <button type="reset" class="btn btn--reset--bgcolor">리셋 </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
